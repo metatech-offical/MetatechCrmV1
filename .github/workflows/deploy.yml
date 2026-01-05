@@ -44,20 +44,11 @@ jobs:
             echo "No package.json found, skipping asset build"
           fi
         continue-on-error: true
-      
+
       - name: Create deployment archive
         run: |
-          # Exclude unnecessary files
-          tar --exclude='.git' \
-              --exclude='.github' \
-              --exclude='node_modules' \
-              --exclude='tests' \
-              --exclude='.env' \
-              --exclude='storage/logs/*' \
-              --exclude='storage/framework/cache/*' \
-              --exclude='storage/framework/sessions/*' \
-              --exclude='storage/framework/views/*' \
-              -czf deploy.tar.gz .
+          git archive --format=tar.gz -o deploy.tar.gz HEAD
+
       
       - name: Deploy to Hostinger via SCP
         uses: appleboy/scp-action@master
