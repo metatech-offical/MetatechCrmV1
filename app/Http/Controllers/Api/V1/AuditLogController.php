@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AuditLogRequest;
 use App\Services\AuditLogService;
 use Illuminate\Http\JsonResponse;
-
+//uploaded image
 class AuditLogController extends Controller
 {
     protected AuditLogService $auditLogService;
