@@ -51,14 +51,15 @@ jobs:
 
       
       - name: Deploy to Hostinger via SCP
-        uses: appleboy/scp-action@master
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOSTINGER_HOST }}
           username: ${{ secrets.HOSTINGER_USERNAME }}
-          password: ${{ secrets.HOSTINGER_PASSWORD }}
+          key: ${{ secrets.HOSTINGER_SSH_KEY }}
           port: 65002
           source: "deploy.tar.gz"
           target: "/tmp"
+
 
       
       - name: Extract and Deploy on Server
@@ -67,7 +68,7 @@ jobs:
           host: ${{ secrets.HOSTINGER_HOST }}
           username: ${{ secrets.HOSTINGER_USERNAME }}
           key: ${{ secrets.HOSTINGER_SSH_KEY }}
-          port: ${{ secrets.HOSTINGER_PORT || 65002 }}
+          port: 65002
           script: |
             # Navigate to project directory
             cd ${{ secrets.HOSTINGER_DEPLOY_PATH || '/home/u123456789/domains/metatech.ae/public_html' }}
