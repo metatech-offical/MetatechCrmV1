@@ -55,11 +55,11 @@ jobs:
         with:
           host: ${{ secrets.HOSTINGER_HOST }}
           username: ${{ secrets.HOSTINGER_USERNAME }}
-          key: ${{ secrets.HOSTINGER_SSH_KEY }}
-          port: ${{ secrets.HOSTINGER_PORT || 65002 }}
+          password: ${{ secrets.HOSTINGER_PASSWORD }}
+          port: 65002
           source: "deploy.tar.gz"
           target: "/tmp"
-          strip_components: 0
+
       
       - name: Extract and Deploy on Server
         uses: appleboy/ssh-action@master
