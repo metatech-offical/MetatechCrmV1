@@ -17,3 +17,10 @@ yarn-error.log
 /.vscode
 deploy.tar.gz
 *.log
+
+# Mac system files
+.DS_Store
+
+# Deployment files
+*.zip
+metatech-crm-deploy.zip
